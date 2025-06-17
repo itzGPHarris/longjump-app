@@ -1,0 +1,67 @@
+@import '../../styles/tokens.css';
+
+.teamMember {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  text-align: center;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  border: 2px solid var(--color-neutral-200);
+  background-color: var(--color-neutral-100);
+  transition: all var(--transition-duration-150) var(--transition-timing-ease);
+}
+
+.avatar:hover {
+  border-color: var(--color-primary-300);
+  transform: scale(1.05);
+}
+
+.memberName {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-700);
+  line-height: var(--line-height-tight);
+  max-width: 80px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .avatar {
+    border-color: var(--color-neutral-700);
+    background-color: var(--color-neutral-800);
+  }
+  
+  .avatar:hover {
+    border-color: var(--color-primary-500);
+  }
+  
+  .memberName {
+    color: var(--color-neutral-300);
+  }
+}
+
+/* Manual dark mode class support */
+:global(.dark) .avatar {
+  border-color: var(--color-neutral-700);
+  background-color: var(--color-neutral-800);
+}
+
+:global(.dark) .avatar:hover {
+  border-color: var(--color-primary-500);
+}
+
+:global(.dark) .memberName {
+  color: var(--color-neutral-300);
+}

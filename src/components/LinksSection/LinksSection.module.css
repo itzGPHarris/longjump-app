@@ -1,0 +1,24 @@
+@import '../../styles/tokens.css';
+
+.linksSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+/* Alternative layout options */
+@media (min-width: var(--breakpoint-md)) {
+  .linksSection {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+}
+
+/* Responsive behavior for smaller screens */
+@media (max-width: var(--breakpoint-sm)) {
+  .linksSection {
+    gap: var(--space-1);
+  }
+}

@@ -1,0 +1,136 @@
+@import '../../styles/tokens.css';
+
+.videoContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: var(--color-neutral-900);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+
+.thumbnailContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform var(--transition-duration-200) var(--transition-timing-ease);
+}
+
+.thumbnailContainer:hover {
+  transform: scale(1.02);
+}
+
+.thumbnailContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  transition: background var(--transition-duration-200) var(--transition-timing-ease);
+}
+
+.thumbnailContainer:hover::before {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+}
+
+.playButton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--space-16);
+  height: var(--space-16);
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-duration-200) var(--transition-timing-ease);
+  z-index: var(--z-index-10);
+}
+
+.playButton:hover {
+  background-color: rgba(255, 255, 255, 1);
+  transform: translate(-50%, -50%) scale(1.1);
+  box-shadow: var(--shadow-xl);
+}
+
+.playIcon {
+  width: var(--space-8);
+  height: var(--space-8);
+  color: var(--color-neutral-700);
+  margin-left: var(--space-1); /* Slight offset to center the triangle visually */
+}
+
+/* Responsive design */
+@media (max-width: var(--breakpoint-sm)) {
+  .playButton {
+    width: var(--space-12);
+    height: var(--space-12);
+  }
+  
+  .playIcon {
+    width: var(--space-6);
+    height: var(--space-6);
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .videoContainer {
+    background-color: var(--color-neutral-800);
+  }
+  
+  .playButton {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .playButton:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+  
+  .playIcon {
+    color: var(--color-neutral-200);
+  }
+}
+
+/* Manual dark mode class support */
+:global(.dark) .videoContainer {
+  background-color: var(--color-neutral-800);
+}
+
+:global(.dark) .playButton {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+:global(.dark) .playButton:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+:global(.dark) .playIcon {
+  color: var(--color-neutral-200);
+}

@@ -1,0 +1,54 @@
+@import '../../styles/tokens.css';
+
+.teamSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.sectionHeading {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-900);
+  line-height: var(--line-height-tight);
+}
+
+.membersContainer {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+/* Responsive behavior */
+@media (max-width: var(--breakpoint-sm)) {
+  .teamSection {
+    gap: var(--space-3);
+  }
+  
+  .membersContainer {
+    gap: var(--space-3);
+    justify-content: center;
+  }
+}
+
+@media (max-width: var(--breakpoint-xs)) {
+  .membersContainer {
+    gap: var(--space-2);
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .sectionHeading {
+    color: var(--color-neutral-100);
+  }
+}
+
+/* Manual dark mode class support */
+:global(.dark) .sectionHeading {
+  color: var(--color-neutral-100);
+}

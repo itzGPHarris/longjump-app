@@ -1,0 +1,98 @@
+@import '../../styles/tokens.css';
+
+.businessHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-4) var(--space-6);
+  background-color: var(--color-neutral-0);
+  border-bottom: 1px solid var(--color-neutral-200);
+  gap: var(--space-4);
+}
+
+.businessName {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-neutral-900);
+  margin: 0;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.boostButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2) var(--space-4);
+  background-color: var(--color-primary-600);
+  color: var(--color-neutral-0);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-none);
+  cursor: pointer;
+  transition: background-color var(--transition-duration-150) var(--transition-timing-ease);
+  min-width: 80px;
+  height: var(--button-height-base);
+}
+
+.boostButton:hover {
+  background-color: var(--color-primary-700);
+}
+
+.boostButton:active {
+  background-color: var(--color-primary-800);
+  transform: translateY(1px);
+}
+
+.boostButton:focus {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* Responsive design */
+@media (max-width: var(--breakpoint-sm)) {
+  .businessHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+  
+  .businessName {
+    font-size: var(--font-size-xl);
+    white-space: normal;
+    text-overflow: initial;
+    overflow: visible;
+  }
+  
+  .boostButton {
+    align-self: stretch;
+    width: 100%;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .businessHeader {
+    background-color: var(--color-neutral-900);
+    border-bottom-color: var(--color-neutral-800);
+  }
+  
+  .businessName {
+    color: var(--color-neutral-100);
+  }
+}
+
+/* Manual dark mode class support */
+:global(.dark) .businessHeader {
+  background-color: var(--color-neutral-900);
+  border-bottom-color: var(--color-neutral-800);
+}
+
+:global(.dark) .businessName {
+  color: var(--color-neutral-100);
+}
